@@ -1,0 +1,44 @@
+server:
+  port: 8050
+
+#  #db connection
+#  spring.datasource.url=jdbc:postgresql://localhost:5432/microservices
+#  spring.datasource.username=postgres
+#  spring.datasource.password=
+#
+#  #--------------------JPA-ORM Properties-----------------
+#  spring.jpa.show-sql=true
+#  spring.jpa.hibernate.ddl-auto=update
+#  spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+#  spring.jpa.properties.hibernate.format_sql=true
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/product
+    username: postgres
+    password: Shashi
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  flyway:
+    baseline-on-migrate: true
+    enabled: true
+    baseline-description: "init"
+    baseline-version: 0
+    locations: classpath:db/migration
+    url: jdbc:postgresql://localhost:5432/product
+    user: postgres
+#    ${spring.datasource.username}
+    password: Shashi
+#      ${spring.datasource.password}
+
+logging:
+  level:
+    org.springframework: DEBUG
+    org.hibernate: DEBUG
+    org.flywaydb: DEBUG
+
+    
